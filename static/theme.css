@@ -1,0 +1,39 @@
+html, body {
+  padding: 0;
+  margin: 0;
+}
+
+
+.sm_menu {
+  width: 280px;
+  min-height: 16px;
+
+  border-radius: 4px;
+  box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.4);
+  background: #ddd;
+}
+
+.sm_menu hr {
+  display: block;
+  width: 100%;
+  height: 0px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #eee;
+}
+
+.sm_button {
+  appearance: none;
+  display: block;
+  width: 100%;
+  padding: 8px 16px;
+  border: 0;
+
+  background: none;
+
+  text-align: left;
+}
+
+.sm_button:hover {
+  background: #ccc;
+}
