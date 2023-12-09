@@ -19,7 +19,10 @@
 
 	let container;
 
-	setContext('menu', { depth });
+	setContext('menu', { 
+		depth,
+		close: () => closeMenu(id),
+	});
 
 	// Make sure menu is visible.
 
