@@ -116,7 +116,6 @@
 		};
 	});
 
-  $: console.log($menus)
 </script>
 
 <button bind:this={container} class="sm_overlay">
