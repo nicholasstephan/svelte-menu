@@ -3,6 +3,7 @@
 
   import SimpleMenu from './menus/simple-menu.svelte';
   import ComplexMenu from './menus/complex-menu.svelte';
+  import ClickOutComplexMenu from './menus/click-out-complex-menu.svelte';
 
 
   function openSimpleMenu(e) {
@@ -78,10 +79,13 @@
   <button use:menu={{component:SimpleMenu, close:'clickout'}}>Close on `click` out</button>
   <button use:menu={{component:SimpleMenu, close:'mouseout'}}>Close on `mouseleave`</button>
   <button use:menu={{component:SimpleMenu, close:'none'}}>Never close</button>
+  <button use:menu={{component:ClickOutComplexMenu, close:'none'}}>Nested in a never close</button>
 
   <h3>Submenus</h3>
 
   <button use:menu={ComplexMenu}>Show me the MENU!</button>
+
+
 
   <h3>Autocompletes</h3>
 

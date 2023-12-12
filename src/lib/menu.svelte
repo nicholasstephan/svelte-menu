@@ -73,8 +73,7 @@
 <div
 	class="sm_menu sm_menu--depth-{depth}"
 	bind:this={container}
-	style="left:{left}; top:{top}; bottom:{bottom}; right:{right}; max-height:{container?.parentNode
-		?.clientHeight - 32}px;"
+	style="left:{left}; top:{top}; bottom:{bottom}; right:{right}; max-height:{container?.parentNode?.clientHeight - 32}px;"
 	on:mouseleave={mouseLeave}
 	on:click|stopPropagation
 >

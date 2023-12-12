@@ -7,5 +7,7 @@
 <Button>New</Button>
 <Button>Save</Button>
 <Button submenu={SimpleMenu}>Open...</Button>
+<Button submenu={SimpleMenu}>Open...</Button>
+<Button submenu={SimpleMenu}>Open...</Button>
 <hr/>
 <Button>Close Window</Button>

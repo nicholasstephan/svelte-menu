@@ -8,13 +8,20 @@
   $: tag = href ? "a" : "button";
 
 	let { depth } = getContext('menu') || { depth: 0 };
+
 	let menuOptions = { 
-    component: submenu, 
     depth: depth + 1, 
     direction: 'right',
     open: 'mouseover',
-    close: 'mouseout'
+    close: 'mouseout',
   };
+
+  if(typeof submenu == 'function') {
+    menuOptions.component = submenu;
+  } 
+  else if(typeof submenu == 'object') {
+    menuOptions = {...menuOptions, ...submenu};
+  }
 
 </script>
 

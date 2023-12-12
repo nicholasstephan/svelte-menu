@@ -34,6 +34,7 @@
           element.addEventListener(newOptions.open || 'click', handler);
         }
 				options = newOptions;
+				update(options);
 			},
 			destroy() {
 				element.removeEventListener(options.open || 'click', handler);
@@ -72,6 +73,46 @@
 		});
 	}
 
+	export function toggle(options) {
+		if(!options.component) {
+      return;
+    }
+
+		let { id, depth, ...params } = options;
+
+		id = id || depth || "menu";
+		
+		menus.update((m) => {
+			let i = m.findIndex((m) => m.id == id);
+			if (i > -1) {
+				return m.filter(f => f.id != id);
+			}
+			if (depth !== undefined) {
+				m = m.slice(0, depth);
+			}
+			return [...m, { id, ...params }];
+		});
+
+		return id;
+	}
+
+	export function update(options) {
+		let { id, depth, ...params } = options;
+		
+    id = id || depth || "menu";
+
+		menus.update((m) => {
+			let i = m.findIndex((m) => m.id == id);
+			if (i > -1) {
+				m[i] = { id, ...params };
+				return m;
+			}
+			return m;
+		});
+
+		return id;
+	}
+
 	export function open(options) {
     if(!options.component) {
       return;
@@ -95,6 +136,7 @@
 
 		return id;
 	}
+
 </script>
 
 <script>
@@ -105,9 +147,12 @@
 
 	onMount(() => {
 		let handler = (e) => {
-      let closeOn = !$menus?.length ? null : $menus?.[0]?.close || 'clickout';
-			if (closeOn == 'clickout') {
-				closeAll();
+			console.log('clicked parent', $menus)
+			for(let [depth, menu] of Object.entries($menus || [])) {
+				if(!menu.close || menu.close == 'clickout') {
+					closeAtDepth(depth);
+					return;
+				}
 			}
 		};
 		container.parentNode.addEventListener('click', handler);
