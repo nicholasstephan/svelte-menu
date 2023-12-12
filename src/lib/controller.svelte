@@ -147,9 +147,8 @@
 
 	onMount(() => {
 		let handler = (e) => {
-			console.log('clicked parent', $menus)
 			for(let [depth, menu] of Object.entries($menus || [])) {
-				if(!menu.close || menu.close == 'clickout') {
+				if(menu.close != 'none') {
 					closeAtDepth(depth);
 					return;
 				}
